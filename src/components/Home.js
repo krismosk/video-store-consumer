@@ -28,11 +28,6 @@ class Home extends React.Component {
     });
   }
 
-  // make rental conditionally render if it has at least one customer or one movie
-  // pass createRental into the Renal component 
-  // rental component will make a post request to backend API
-  // do we want to save the rental in the front end? 
-
   render () {
     return (
       <HashRouter>
