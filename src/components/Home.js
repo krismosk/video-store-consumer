@@ -1,49 +1,27 @@
 import React, { Component } from 'react';
-import CustomerList from './CustomerList.js';
-import axios from 'axios';
+import CustomerList from './CustomerList.js'
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies: [],
-      customers: [],
-      selectedCustomer: '',
-      selectedMovie: '',
+      movies: []
     };
   }
 
-  addCustomers = () => {
-    axios.get('http://localhost:3001/customers')
-      .then((response) => {
-        this.setState({
-          customers: response.data,
-        });
-      })
-      .catch((error) => {
-        console.log('error');
-      });
+  displayNav() {
+    return (
+      <nav>
+        <button
+        type="button"
+        aria-label="Customers"
+        >
+          Customers
+        </button>
+    </nav>
+    )
   }
-
-  listCustomers(customers) {
-    const customerElements = customers.map((customer, i) => {
-      return (
-        <CustomerList 
-          customers={this.state.customers}
-          // selectCustomerCallback
-        />
-      );
-    });
-    return customerElements;
-  }
-  
-
-  // selectCustomer = () => {
-
-  // }
-
-
   // add function
   // select function
   // fiter function?
@@ -52,9 +30,8 @@ class Home extends React.Component {
   render () {
     return (
       <div>
-        <ul>
-          {this.listCustomers(this.state.customers)}
-        </ul>
+      <div>{this.displayNav}</div>
+      <div><CustomerList /></div>
       </div>
     )
   }
