@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
-// import { Route, Link } from 'react-router-dom'
-import CustomerList from './CustomerList.js'
+
+import CustomerList from './CustomerList.js';
+import axios from 'axios';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies: []
+      movies: [],
+      customers: [],
+      selectedCustomer: '',
+      selectedMovie: '',
     };
+  }
+
+  addCustomers = () => {
+    axios.get('http://localhost:3000/customers')
+      .then((response) => {
+        this.setState({
+          customers: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log('error');
+      });
+  }
+
+
+  selectCustomer = () => {
+
   }
 
 
@@ -20,7 +41,9 @@ class Home extends React.Component {
   render () {
     return (
       <div>
-
+        <ul>
+          {this.listCustomers(this.state.customers)}
+        </ul>
       </div>
     )
   }
