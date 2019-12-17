@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
-import CustomerList from './CustomerList.js'
+import { Route, NavLink, HashRouter} from "react-router-dom";
+import Search from "./Search";
+import RentalLibrary from "./RentalLibrary";
+import CustomerList from "./CustomerList";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      movies: []
+      movies: [],
+      selectedCustomer: '',
     };
   }
-
-  displayNav() {
-    return (
-      <nav>
-        <button
-        type="button"
-        aria-label="Customers"
-        >
-          Customers
-        </button>
-    </nav>
-    )
-  }
+  
   // add function
   // select function
   // fiter function?
@@ -29,11 +21,24 @@ class Home extends React.Component {
 
   render () {
     return (
-      <div>
-      <div>{this.displayNav}</div>
-      <div><CustomerList /></div>
-      </div>
-    )
+      <HashRouter>
+        <div className="App">
+            <h1>Ada Movie Store</h1>
+            <ul className="header">
+              <li><NavLink to="/search">Search</NavLink></li>
+              <li><NavLink to="/movies">Movies</NavLink></li>
+              <li><NavLink to="/customers">Customers</NavLink></li>
+              {/* <li><NavLink to="/rentals">Rentals</NavLink></li> */}
+            </ul>
+            <div className="content">
+              <Route path="/search" component={Search}/>
+              <Route path="/movies" component={RentalLibrary}/>
+              <Route path="/customers" component={CustomerList}/>
+              {/* <Route path="/rentals" component={Rentals}/> */}
+            </div>
+          </div>
+        </HashRouter>
+    );
   }
 }
 
