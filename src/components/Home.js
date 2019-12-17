@@ -11,34 +11,33 @@ class Home extends React.Component {
 
     this.state = {
       movies: [],
-      // selectedMovie: {
-      //   title: "The Grinch",
-      //   overview: "Grumpy Grinch",
-      //   releaseDate: 2000,
-      //   inventory: 1,
-      //   imageUrl: "pictureurl",
-      //   externalId: ,
-      // },
-      selectedCustomer: "hi",
+      selectedCustomer: '',
+      selectedMovie: ''
     };
   }
-
+    
   selectCustomer = (customer) => {
     this.setState({
       selectedCustomer: customer,
     });
   }
 
-  createRental = (customer, movie) => {
-
+  selectMovie = (movie) => {
+    console.log('MOVIE SHOULD BE HERE')
+    this.setState({ 
+      selectedMovie: movie
+    });
   }
+
+  // createRental = (customer, movie) => {
+
+  // }
 
   render () {
     return (
       <HashRouter>
         <div className="App">
             <h1>Ada Movie Store</h1>
-            <p>{`${this.state.selectedCustomer.name}`}</p>
             <ul className="header">
               <li><NavLink to="/search">Search</NavLink></li>
               <li><NavLink to="/movies">Movies</NavLink></li>
@@ -47,13 +46,13 @@ class Home extends React.Component {
             </ul>
             <div className="content">
               <Route path="/search" component={Search}/>
-              <Route path="/movies" component={RentalLibrary}/>
+              <Route path="/movies" render={() => <RentalLibrary selectMovie={this.selectMovie}/>}/>
               <Route path="/customers" render={() => <CustomerList selectCustomer={this.selectCustomer} />}/>
               {/* <Route path="/rentals" component={Rentals}/> */}
             </div>
           </div>
-        </HashRouter>
-    );
+      </HashRouter>
+    )
   }
 }
 
