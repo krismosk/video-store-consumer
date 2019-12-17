@@ -12,7 +12,7 @@ class CustomerList extends React.Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3001/customers')
+    axios.get('http://localhost:3000/customers')
       .then((response) => {
         this.setState({
           customers: response.data,
@@ -23,10 +23,26 @@ class CustomerList extends React.Component {
       });
   }
 
+  findCustomer = (customerId) => {
+    const selectedCustomer = this.state.customers.find((customer) => {
+      return customer.id === customerId;
+    })
+    
+    this.props.selectCustomer(selectedCustomer);
+  }
+
   makeCustomerList() {
-   const customerList = this.state.customers.map((customer) => {
+   const customerList = this.state.customers.map((customer, i) => {
       return <Customer
-        name={customer.name}
+        key={ i }
+        id={ customer.id }
+        name={ customer.name }
+        address={ customer.address }
+        city={ customer.city }
+        state={ customer.state }
+        postalCode={ customer.postalCode }
+        phone={ customer.phone }
+        findCustomer={ this.findCustomer }
       />
     })
 
