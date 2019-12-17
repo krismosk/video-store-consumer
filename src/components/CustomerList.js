@@ -24,9 +24,15 @@ class CustomerList extends React.Component {
   }
 
   makeCustomerList() {
-   const customerList = this.state.customers.map((customer) => {
+   const customerList = this.state.customers.map((customer, i) => {
       return <Customer
-        name={customer.name}
+        id={ customer.id }
+        name={ customer.name }
+        address={ customer.address }
+        city={ customer.city }
+        state={ customer.state }
+        postalCode={ customer.postalCode }
+        phone={ customer.phone }
       />
     })
 
