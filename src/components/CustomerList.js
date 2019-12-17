@@ -23,9 +23,17 @@ class CustomerList extends React.Component {
       });
   }
 
+  findCustomer = (customerId) => {
+    const selectedCustomer = this.state.customers.find((customer) => {
+      return customer.id === customerId;
+    })
+    this.props.selectCustomer(selectedCustomer);
+  }
+
   makeCustomerList() {
    const customerList = this.state.customers.map((customer, i) => {
       return <Customer
+        key={ i }
         id={ customer.id }
         name={ customer.name }
         address={ customer.address }
@@ -33,6 +41,7 @@ class CustomerList extends React.Component {
         state={ customer.state }
         postalCode={ customer.postalCode }
         phone={ customer.phone }
+        findCustomer={ this.findCustomer }
       />
     })
 

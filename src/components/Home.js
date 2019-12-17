@@ -10,14 +10,19 @@ class Home extends React.Component {
 
     this.state = {
       movies: [],
-      selectedCustomer: '',
+      selectedCustomer: "",
     };
   }
   
   // add function
-  // select function
   // fiter function?
   // create rental function
+
+  selectCustomer = (customer) => {
+    this.setState({
+      selectedCustomer: customer,
+    });
+  }
 
   render () {
     return (
@@ -33,7 +38,7 @@ class Home extends React.Component {
             <div className="content">
               <Route path="/search" component={Search}/>
               <Route path="/movies" component={RentalLibrary}/>
-              <Route path="/customers" component={CustomerList}/>
+              <Route path="/customers" render={() => <CustomerList selectCustomer={this.selectCustomer} />}/>
               {/* <Route path="/rentals" component={Rentals}/> */}
             </div>
           </div>

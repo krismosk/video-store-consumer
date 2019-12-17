@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const Customer = ({ id, name, address, city, state, postalCode, phone }) => {
+const Customer = ({ id, name, address, city, state, postalCode, phone, findCustomer }) => {
   
   return (
   <div>
@@ -11,7 +11,7 @@ const Customer = ({ id, name, address, city, state, postalCode, phone }) => {
       <p>{ city }</p>
       <p>{ state }</p>
     </section>
-    <button type="button">Select</button>
+    <button onClick={() => {findCustomer(id)}} type="button">Select</button>
   </div>
   )
 }
