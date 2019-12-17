@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './Search.css';
 import axios from 'axios';
-import Movie from './Movie'
+import MovieDb from './MovieDb'
 import { nullLiteral } from '@babel/types';
 
 class SearchBar extends React.Component {
@@ -40,19 +40,10 @@ displayResults = () => {
   console.log(this.state.results);
   console.log(this.state.results[0]);
   const resultList = (this.state.results).map((movie) => {
-    return <Movie title={movie.title} overview={movie.overview} release_date={movie.release_date} image_url={movie.poster_path} external_id={movie.id}/>
+    return <MovieDb title={movie.title} overview={movie.overview} release_date={movie.release_date} image_url={movie.poster_path} external_id={movie.id}/>
   });
   return resultList;
 }
-
-// const customerList = this.state.customers.map((customer) => {
-//   return <Customer
-//     name={customer.name}
-//   />
-// })
-
-// return customerList;
-
 
 render () {
 
