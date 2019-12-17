@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 
 const Movie = (props) => {
+  
   return(
     <section>
+      <img src={props.image} alt={`${props.title}`}/>
       <p> {props.title} </p>
       <p> {props.overview} </p>
       <p> {props.releaseDate} </p>
       <p> {props.inventory} </p>
-      <img src={props.image} alt={`${props.title}`}/>
+      
+      
 
       <button 
         type='button'
-        onClick={() => {props.selectMovieCallback(props.id)}}
+        onClick={() => {props.findMovie(props.id)}}
       >
-      </button>
+      Select</button>
     </section>
   )
 }

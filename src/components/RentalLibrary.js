@@ -12,11 +12,12 @@ class RentalLibrary extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3003/movies')
+    axios.get('http://localhost:3000/movies')
     .then((response) => {
       this.setState({
         movies: response.data
       });
+      console.log(response.data)
     })
     .catch((error) => {
       // come back to handle errors better
@@ -24,26 +25,35 @@ class RentalLibrary extends Component {
     });
   }
 
+  findMovie = (movieId) => {
+    const selectedMovie = this.state.movies.find((movie) => {
+      return movie.id === movieId;
+    });
+    this.props.selectMovie(selectedMovie);
+  }
+
   makeMovieList() {
     const movieList = this.state.movies.map((movie, i) => {
       return <Movie
         key={i}
+        id={movie.id}
+        image={movie.image_url}
         title={movie.title}
         overview={movie.overview}
         releaseDate={movie.release_date}
-        inventory={movie.inventory}
-        image={movie.image_url}
+        inventory={1}
         externalId={movie.external_id}
-        selectMovieCallback={movie.selectMovieCallback}
+        findMovie={this.findMovie}
       />
     });
+    
     return movieList
   }
 
   render() {
     return (
       <div>
-        { this.makeMovieList }
+        { this.makeMovieList() }
       </div>
     )
   }
