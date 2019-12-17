@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Route, Link } from 'react-router-dom'
 import CustomerList from './CustomerList.js'
 
 class Home extends React.Component {
@@ -10,18 +11,7 @@ class Home extends React.Component {
     };
   }
 
-  displayNav() {
-    return (
-      <nav>
-        <button
-        type="button"
-        aria-label="Customers"
-        >
-          Customers
-        </button>
-    </nav>
-    )
-  }
+
   // add function
   // select function
   // fiter function?
@@ -30,8 +20,7 @@ class Home extends React.Component {
   render () {
     return (
       <div>
-      <div>{this.displayNav}</div>
-      <div><CustomerList /></div>
+
       </div>
     )
   }
