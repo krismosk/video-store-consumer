@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 
-const Customer = (props) => {
+const Customer = ({ id, name, address, city, state, postalCode, phone, findCustomer }) => {
+  
   return (
-  <p>{ props.name }</p>
+  <div>
+    <section>
+      <p>{ id }</p>
+      <p>{ name }</p>
+      <p>{ address }</p>
+      <p>{ city }</p>
+      <p>{ state }</p>
+    </section>
+    <button onClick={() => {findCustomer(id)}} type="button">Select</button>
+  </div>
   )
 }
 
