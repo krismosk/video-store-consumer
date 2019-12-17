@@ -20,14 +20,14 @@ class App extends Component {
       <div className="App">
           <h1>Ada Movie Store</h1>
           <ul className="header">
-            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink exact to="/">Home</NavLink></li>
             <li><NavLink to="/search">Search</NavLink></li>
             <li><NavLink to="/movies">Movies</NavLink></li>
             <li><NavLink to="/customers">Customers</NavLink></li>
             {/* <li><NavLink to="/rentals">Rentals</NavLink></li> */}
           </ul>
           <div className="content">
-            <Route path="/" component={Home}/>
+            <Route exact path="/" component={Home}/>
             <Route path="/search" component={Search}/>
             <Route path="/movies" component={RentalLibrary}/>
             <Route path="/customers" component={CustomerList}/>
