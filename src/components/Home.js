@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter} from "react-router-dom";
 import Search from "./Search";
+import Rental from "./Rental";
 import RentalLibrary from "./RentalLibrary";
 import CustomerList from "./CustomerList";
 
@@ -10,13 +11,17 @@ class Home extends React.Component {
 
     this.state = {
       movies: [],
-      selectedCustomer: "",
+      // selectedMovie: {
+      //   title: "The Grinch",
+      //   overview: "Grumpy Grinch",
+      //   releaseDate: 2000,
+      //   inventory: 1,
+      //   imageUrl: "pictureurl",
+      //   externalId: ,
+      // },
+      selectedCustomer: "hi",
     };
   }
-  
-  // add function
-  // fiter function?
-  // create rental function
 
   selectCustomer = (customer) => {
     this.setState({
@@ -24,11 +29,16 @@ class Home extends React.Component {
     });
   }
 
+  createRental = (customer, movie) => {
+
+  }
+
   render () {
     return (
       <HashRouter>
         <div className="App">
             <h1>Ada Movie Store</h1>
+            <p>{`${this.state.selectedCustomer.name}`}</p>
             <ul className="header">
               <li><NavLink to="/search">Search</NavLink></li>
               <li><NavLink to="/movies">Movies</NavLink></li>

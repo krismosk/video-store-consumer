@@ -27,6 +27,7 @@ class CustomerList extends React.Component {
     const selectedCustomer = this.state.customers.find((customer) => {
       return customer.id === customerId;
     })
+    
     this.props.selectCustomer(selectedCustomer);
   }
 
