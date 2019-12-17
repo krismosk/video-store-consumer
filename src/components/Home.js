@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { Route, Link } from 'react-router-dom'
 import CustomerList from './CustomerList.js'
 import RentalLibrary from './RentalLibrary'
 
@@ -11,6 +12,7 @@ class Home extends React.Component {
       selectedMovie: undefined
     };
   }
+
 
   // add function
   selectMovie = (movieId) => {
@@ -31,6 +33,9 @@ class Home extends React.Component {
       <div>
         <section><CustomerList /></section>
         <section><RentalLibrary selectMovieCallback={this.selectMovie}/></section>
+
+
+
       </div>
     )
   }
