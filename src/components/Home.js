@@ -11,7 +11,7 @@ class Home extends React.Component {
 
     this.state = {
       selectedCustomer: '',
-      selectedMovie: ''
+      selectedMovie: '',
     };
   }
     
