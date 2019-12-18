@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const Customer = ({ id, name, address, city, state, postalCode, phone, findCustomer }) => {
   
@@ -14,6 +15,17 @@ const Customer = ({ id, name, address, city, state, postalCode, phone, findCusto
     <button onClick={() => {findCustomer(id)}} type="button">Select</button>
   </div>
   )
+}
+
+Customer.propTypes = {
+  findcustomer: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  address: PropTypes.string,
+  city: PropTypes.string,
+  state: PropTypes.string,
+  postalCode: PropTypes.string,
+  phone: PropTypes.string,
 }
 
 export default Customer;

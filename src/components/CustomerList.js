@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Customer from './Customer.js';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class CustomerList extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class CustomerList extends React.Component {
         });
       })
       .catch((error) => {
-        console.log('error');
+        console.log(error.message);
       });
   }
 
@@ -56,6 +57,10 @@ class CustomerList extends React.Component {
       </div>
     )
   }
+}
+
+CustomerList.propTypes = {
+  selectCustomer: PropTypes.func.isRequired
 }
 
 export default CustomerList;
