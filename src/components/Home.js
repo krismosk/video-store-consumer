@@ -22,7 +22,6 @@ class Home extends React.Component {
   }
 
   selectMovie = (movie) => {
-    console.log('MOVIE SHOULD BE HERE')
     this.setState({ 
       selectedMovie: movie
     });

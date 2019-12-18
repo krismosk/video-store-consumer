@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDB it can be rendered and matches the snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="MovieCard"
+  >
+    <div>
+      <img
+        class="searchIcon"
+        src="test image"
+      />
+    </div>
+    <div>
+      <h3
+        class="searchMovieTitle"
+      >
+        test title
+      </h3>
+      <p
+        class="searchDate"
+      >
+        test date
+      </p>
+      <p
+        class="searchOverview"
+      >
+        test overview
+      </p>
+    </div>
+    <div>
+      <button
+        class="button searchAdd"
+        type="button"
+      >
+        Add to Rental Library
+      </button>
+    </div>
+  </section>
+</DocumentFragment>
+`;
