@@ -11,7 +11,7 @@ class Home extends React.Component {
 
     this.state = {
       selectedCustomer: '',
-      selectedMovie: ''
+      selectedMovie: '',
     };
   }
     
@@ -28,15 +28,12 @@ class Home extends React.Component {
     });
   }
 
-  // createRental = (customer, movie) => {
-
-  // }
-
   render () {
     return (
       <HashRouter>
         <div className="App">
             <h1>Ada Movie Store</h1>
+            <section><Rental movie={this.state.selectedMovie} customer={this.state.selectedCustomer}/></section>
             <ul className="header">
               <li><NavLink to="/search">Search</NavLink></li>
               <li><NavLink to="/movies">Movies</NavLink></li>

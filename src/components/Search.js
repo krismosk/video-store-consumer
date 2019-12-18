@@ -13,15 +13,12 @@ class SearchBar extends React.Component {
 
     this.state = {
       searchTerm: '',
-      movieToAdd: undefined,
       results: [],
     };
   }
 // const SearchBar = ({ searchTerm, searchChangeCallback }) => {
 
 searchDatabase = (searchTerm) => {
-  
-  console.log(`https://api.themoviedb.org/3/search/movie?api_key=a4e96005d8a3d373dc3607963dc38e8f&query=${searchTerm}`);
   axios.get(`https://api.themoviedb.org/3/search/movie?api_key=a4e96005d8a3d373dc3607963dc38e8f&query=${searchTerm}`)
   .then((response) => {
     this.setState({
@@ -35,18 +32,44 @@ searchDatabase = (searchTerm) => {
   });
 }
 
+addMovie = (movie) => {
+  let params = {
+    title: movie.title,
+    overview: movie.overview,
+    release_date: movie.releaseDate,
+    image_url: movie.image,
+    external_id: movie.externalId
+  }
+
+  axios.post('http://localhost:3000/movies', params)
+  .then((response) => {
+    // this.setState({
+    //   movies: response.data
+    // });
+    console.log(response.data)
+  })
+  .catch((error) => {
+    // come back to handle errors better
+    console.log(error.message)
+  });
+}
+
+
 displayResults = () => {
-  console.log(this.state.searchTerm);
-  console.log(this.state.results);
-  console.log(this.state.results[0]);
-  const resultList = (this.state.results).map((movie) => {
-    return <MovieDb title={movie.title} overview={movie.overview} release_date={movie.release_date} image_url={movie.poster_path} external_id={movie.id}/>
+  const resultList = (this.state.results).map((movie, i) => {
+    return <MovieDb title={movie.title} 
+            id={i}
+            overview={movie.overview} 
+            releaseDate={movie.release_date} 
+            image={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} 
+            externalId={movie.id}
+            addMovieCallback={this.addMovie}/>
   });
   return resultList;
 }
 
 render () {
-
+console.log(this.state.moviesToAdd)
 return (
   <section>
       <div>
