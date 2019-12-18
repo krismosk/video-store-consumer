@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rental it can be rendered and matches the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <section>
+      <p />
+      <p />
+      <p />
+      <button>
+        Checkout Rental
+      </button>
+    </section>
+  </div>
+</DocumentFragment>
+`;

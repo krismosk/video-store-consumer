@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home it can be rendered and matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <h1>
+      Ada Movie Store
+    </h1>
+    <section>
+      <div>
+        <section>
+          <p />
+          <p />
+          <p />
+          <button>
+            Checkout Rental
+          </button>
+        </section>
+      </div>
+    </section>
+    <ul
+      class="header"
+    >
+      <li>
+        <a
+          href="#/search"
+        >
+          Search
+        </a>
+      </li>
+      <li>
+        <a
+          href="#/movies"
+        >
+          Movies
+        </a>
+      </li>
+      <li>
+        <a
+          href="#/customers"
+        >
+          Customers
+        </a>
+      </li>
+    </ul>
+    <div
+      class="content"
+    />
+  </div>
+</DocumentFragment>
+`;
