@@ -23,10 +23,17 @@ class Home extends React.Component {
   }
 
   selectMovie = (movie) => {
-    console.log('MOVIE SHOULD BE HERE')
     this.setState({ 
       selectedMovie: movie
     });
+  }
+
+  clearSelection = () => {
+    this.setState({
+      selectedCustomer: undefined,
+      selectedMovie: undefined,
+      rentalSubmitted: true,
+    })
   }
 
   render () {
@@ -34,7 +41,7 @@ class Home extends React.Component {
       <HashRouter>
         <div className="App">
             <h1>Ada Movie Store</h1>
-            <section><Rental movie={this.state.selectedMovie} customer={this.state.selectedCustomer}/></section>
+            <section><Rental movie={this.state.selectedMovie} customer={this.state.selectedCustomer} clearSelection={this.clearSelection}/></section>
             <ul className="header">
               <li><NavLink to="/search">Search</NavLink></li>
               <li><NavLink to="/movies">Movies</NavLink></li>

@@ -9,7 +9,7 @@ class Rental extends React.Component {
     super(props);
 
     this.state = {
-      rental: '',
+      rental: undefined,
       dueDate: date,
     };
   }
@@ -23,22 +23,31 @@ class Rental extends React.Component {
 
     axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, params)
     .then((response) => {
-      this.setState({rental: response.data})
+      this.setState({rental: response.data});
+      this.clearRental();
+      this.props.clearSelection();
     })
     .catch((error) => {
       this.setState({ error: error.message });
     });
   }
 
+  clearRental = () => {
+    this.setState({
+      rental: '',
+    });
+  }
+
   showRental = () => {
     const showMovie = this.props.movie ? <p>{this.props.movie.title}</p> : "";
     const showCustomer = this.props.customer ? <p>{this.props.customer.name}</p> : "";
-
+    const showRental = this.state.rental ? <p>{this.state.rental}</p> : "";
     return (
       <div>
         <p>{showMovie}</p>
         <p>{showCustomer}</p>
-        <p>{`${this.state.rental}`}</p>
+        <p>{`${showRental}`}</p>
+        <p></p>
         <button onClick={() => {this.createRental(this.props.movie, this.props.customer, this.state.dueDate)}}>Checkout Rental</button>
       </div>
     )
@@ -48,11 +57,11 @@ class Rental extends React.Component {
     const rentalContent = this.props.movie || this.props.customer ? <p>{ this.showRental() }</p> : "";
     
     return (
-    <div>
-      <section>
-        { rentalContent }
-      </section>
-    </div>
+      <div>
+        <section>
+          { rentalContent }
+        </section>
+      </div>
     )
   }
 }
