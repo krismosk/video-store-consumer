@@ -13,7 +13,7 @@ class RentalsList extends React.Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3000/rentals')
+    axios.get('https://video-store-backend.herokuapp.com/rentals')
       .then((response) => {
         this.setState({
           rentals: response.data,
@@ -65,7 +65,7 @@ class RentalsList extends React.Component {
   }
 
   getOverdueRentals() {
-    axios.get('http://localhost:3000/rentals/overdue')
+    axios.get('https://video-store-backend.herokuapp.com/rentals/overdue')
     .then((response) => {
       this.setState({
         overdueRentals: response.data,
@@ -81,7 +81,7 @@ class RentalsList extends React.Component {
       customer_id: customerId,
     }
 
-    axios.post(`http://localhost:3000/rentals/${movieTitle}/return`, params)
+    axios.post(`https://video-store-backend.herokuapp.com/rentals/${movieTitle}/return`, params)
     .then((response) => {
       const newRentals = this.state.rentals.filter((rental) => rental.id !== rentalId);
       this.setState({
