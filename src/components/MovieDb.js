@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './MovieDb.css';
 class MovieDb extends React.Component {
   constructor(props) {
@@ -36,9 +37,14 @@ return (
 }
 };
 
-// SearchBar.propTypes = {
-//   // searchChangeCallback: PropTypes.func.isRequired,
-//   // searchTerm: PropTypes.string.isRequired,
-// };
+MovieDb.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  overview: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  externalId: PropTypes.number.isRequired,
+  addMovieCallback: PropTypes.func.isRequired,
+};
 
 export default MovieDb;

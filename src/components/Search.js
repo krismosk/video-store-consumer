@@ -121,9 +121,4 @@ return (
 }
 };
 
-SearchBar.propTypes = {
-  // searchChangeCallback: PropTypes.func.isRequired,
-  // searchTerm: PropTypes.string.isRequired,
-};
-
 export default SearchBar;
