@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Movie from './Movie';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class RentalLibrary extends Component {
   constructor(props) {
@@ -12,12 +13,12 @@ class RentalLibrary extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3000/movies')
+    axios.get('http://localhost:3003/movies')
     .then((response) => {
       this.setState({
         movies: response.data
       });
-      console.log(response.data)
+      
     })
     .catch((error) => {
       // come back to handle errors better
@@ -58,6 +59,10 @@ class RentalLibrary extends Component {
     )
   }
 
+}
+
+RentalLibrary.propTypes = {
+  selectMovie: PropTypes.func.isRequired
 }
 
 export default RentalLibrary;

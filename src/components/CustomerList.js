@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Customer from './Customer.js';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class CustomerList extends React.Component {
   constructor(props) {
@@ -12,16 +13,17 @@ class CustomerList extends React.Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3000/customers')
+    axios.get('http://localhost:3003/customers')
       .then((response) => {
         this.setState({
           customers: response.data,
         });
       })
       .catch((error) => {
-        console.log('error');
+        console.log(error.message);
       });
   }
+
 
   findCustomer = (customerId) => {
     const selectedCustomer = this.state.customers.find((customer) => {
@@ -56,6 +58,10 @@ class CustomerList extends React.Component {
       </div>
     )
   }
+}
+
+CustomerList.propTypes = {
+  selectCustomer: PropTypes.func.isRequired
 }
 
 export default CustomerList;

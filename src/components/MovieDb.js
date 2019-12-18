@@ -11,7 +11,7 @@ class MovieDb extends React.Component {
 
 
 render () {
-console.log(this.props.img_url);
+
 return (
   <section className="MovieCard">
       <div>
