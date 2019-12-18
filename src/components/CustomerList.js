@@ -4,7 +4,6 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 class CustomerList extends React.Component {
-  _isMounted = false;
   constructor(props) {
     super(props);
 
@@ -14,7 +13,6 @@ class CustomerList extends React.Component {
   }
 
   componentDidMount () {
-    this._isMounted = true;
     axios.get('http://localhost:3003/customers')
       .then((response) => {
         this.setState({
@@ -26,9 +24,6 @@ class CustomerList extends React.Component {
       });
   }
 
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
 
   findCustomer = (customerId) => {
     const selectedCustomer = this.state.customers.find((customer) => {
