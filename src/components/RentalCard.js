@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './RentalCard.css';
 
 const RentalCard = ({ rentalId, movieTitle, customerId, customerName, checkoutDate, dueDate, checkinRental }) => {
   
   return (
   <div>
-    <section>
+    <section className="RentalCard">
       <p>Title: { movieTitle }</p>
       <p>Customer: { customerName }</p>
       <p>Checkout date: { checkoutDate } </p>
