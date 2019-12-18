@@ -5,7 +5,10 @@ const RentalCard = ({ rentalId, movieTitle, customerId, customerName, checkoutDa
   return (
   <div>
     <section>
-      <p>{ movieTitle } { customerName } { checkoutDate } { dueDate }</p>
+      <p>Title: { movieTitle }</p>
+      <p>Customer: { customerName }</p>
+      <p>Checkout date: { checkoutDate } </p>
+      <p>Due date: { dueDate }</p>
     </section>
     <button onClick={() => {checkinRental(customerId, movieTitle, rentalId)}} type="button">Check in Rental</button>
   </div>
