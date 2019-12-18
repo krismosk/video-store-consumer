@@ -25,6 +25,15 @@ class RentalLibrary extends Component {
     });
   }
 
+  formatDate = (date) => {
+    const monthNames = [ "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December" ];
+  
+    let newDate = new Date(date);
+    let formattedDate = monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear();
+    return formattedDate;
+  }
+
   findMovie = (movieId) => {
     const selectedMovie = this.state.movies.find((movie) => {
       return movie.id === movieId;
@@ -44,6 +53,7 @@ class RentalLibrary extends Component {
         inventory={1}
         externalId={movie.external_id}
         findMovie={this.findMovie}
+        dateFormatting={this.formatDate}
       />
     });
     
