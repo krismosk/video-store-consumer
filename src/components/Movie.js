@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Movie.css';
+import PropTypes from 'prop-types';
 
 const Movie = (props) => {
 
@@ -24,7 +25,17 @@ const Movie = (props) => {
 
       
     </section>
-  )
+  );
+};
+
+Movie.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  overview: PropTypes.string,
+  releaseDate: PropTypes.string,
+  inventory: PropTypes.number,
+  findMovie: PropTypes.func.isRequired
 }
 
 export default Movie;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search it can be rendered and matches the snapshot 1`] = `
+<DocumentFragment>
+  <section>
+    <div>
+      <label
+        class="search-bar--label"
+        for="searchBar"
+      >
+        Search Movie Database: 
+      </label>
+    </div>
+    <input
+      class="search-bar"
+      id="searchBar"
+      name="searchBar"
+      value=""
+    />
+    <div />
+  </section>
+</DocumentFragment>
+`;

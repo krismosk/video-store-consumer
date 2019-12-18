@@ -19,7 +19,7 @@ formatDate = (date) => {
   return formattedDate;
 }
 render () {
-console.log(this.props.img_url);
+
 return (
   <section className="MovieCard">
       <div>

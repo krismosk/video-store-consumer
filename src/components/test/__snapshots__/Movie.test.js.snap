@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie it can be rendered and matches the snapshot 1`] = `
+<DocumentFragment>
+  <section>
+    <img
+      alt="test title"
+      src="test image"
+    />
+    <p>
+       test title 
+    </p>
+    <p>
+       test overview 
+    </p>
+    <p>
+       test date 
+    </p>
+    <p>
+       1 
+    </p>
+    <button
+      type="button"
+    >
+      Select
+    </button>
+  </section>
+</DocumentFragment>
+`;

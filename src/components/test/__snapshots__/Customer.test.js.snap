@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customer it can be rendered and matches the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <section>
+      <p>
+        1337
+      </p>
+      <p>
+        test customer
+      </p>
+      <p>
+        test address
+      </p>
+      <p>
+        test city
+      </p>
+      <p>
+        test state
+      </p>
+    </section>
+    <button
+      type="button"
+    >
+      Select
+    </button>
+  </div>
+</DocumentFragment>
+`;
