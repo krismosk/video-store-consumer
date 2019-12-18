@@ -8,6 +8,7 @@ class RentalsList extends React.Component {
 
     this.state = {
       rentals: [],
+      overdueRentals: undefined,
     };
   }
 
@@ -21,6 +22,8 @@ class RentalsList extends React.Component {
       .catch((error) => {
         console.log('error');
       });
+
+    this.getOverdueRentals();
   }
 
   makeRentalList() {
@@ -38,7 +41,40 @@ class RentalsList extends React.Component {
      })
  
      return rentalList;
-   }
+  }
+
+  makeOverdueList() {    
+    if (this.state.overdueRentals === undefined ) {
+      return <p>NO OVERDUE RENTALS</p>;
+    }
+    else {
+      const overdueList = this.state.overdueRentals.map((rental, i) => {
+        return <RentalCard
+          key={ i }
+          movieTitle={ rental.title }
+          customerId={ rental.customer_id }
+          customerName={ rental.name }
+          rentalId={ rental.id }
+          checkoutDate={ rental.checkout_date }
+          dueDate={ rental.due_date }
+          checkinRental= { this.checkinRental }
+        />
+      });
+      return overdueList;
+    }
+  }
+
+  getOverdueRentals() {
+    axios.get('http://localhost:3000/rentals/overdue')
+    .then((response) => {
+      this.setState({
+        overdueRentals: response.data,
+      });
+    })
+    .catch((error) => {
+      console.log('error');
+    });
+  }
 
   checkinRental = (customerId, movieTitle, rentalId) => {
     let params = {
@@ -57,13 +93,12 @@ class RentalsList extends React.Component {
     .catch((error) => {
       this.setState({ error: error.message });
     });
-
-
   }
 
   render() {
     return (
       <div>
+        {this.makeOverdueList()}
         {this.makeRentalList()}
       </div>
     )
