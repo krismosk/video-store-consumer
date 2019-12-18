@@ -24,6 +24,7 @@ class Rental extends React.Component {
     axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, params)
     .then((response) => {
       this.setState({rental: response.data});
+      console.log(response.data);
       this.clearRental();
       this.props.clearSelection();
     })
