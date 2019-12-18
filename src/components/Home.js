@@ -10,8 +10,9 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      selectedCustomer: '',
-      selectedMovie: '',
+      selectedCustomer: undefined,
+      selectedMovie: undefined,
+      rentalSubmitted: false,
     };
   }
     

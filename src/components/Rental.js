@@ -4,8 +4,6 @@ import axios from 'axios';
 let date = new Date();
 date.setDate(new Date().getDate() + 7);
 
- // make rental conditionally render if it has at least one customer or one movie
-
 class Rental extends React.Component {
   constructor(props) {
     super(props);
@@ -32,14 +30,27 @@ class Rental extends React.Component {
     });
   }
 
+  showRental = () => {
+    const showMovie = this.props.movie ? <p>{this.props.movie.title}</p> : "";
+    const showCustomer = this.props.customer ? <p>{this.props.customer.name}</p> : "";
+
+    return (
+      <div>
+        <p>{showMovie}</p>
+        <p>{showCustomer}</p>
+        <p>{`${this.state.rental}`}</p>
+        <button onClick={() => {this.createRental(this.props.movie, this.props.customer, this.state.dueDate)}}>Checkout Rental</button>
+      </div>
+    )
+  }
+
   render() {
+    const rentalContent = this.props.movie || this.props.customer ? <p>{ this.showRental() }</p> : "";
+    
     return (
     <div>
       <section>
-        <p>{this.props.movie.title}</p>
-        <p>{this.props.customer.name}</p>
-        <p>{`${this.state.rental}`}</p>
-        <button onClick={() => {this.createRental(this.props.movie, this.props.customer, this.state.dueDate)}}>Checkout Rental</button>
+        { rentalContent }
       </section>
     </div>
     )
