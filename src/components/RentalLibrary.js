@@ -13,12 +13,11 @@ class RentalLibrary extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3003/movies')
+    axios.get('http://localhost:3000/movies')
     .then((response) => {
       this.setState({
         movies: response.data
       });
-      
     })
     .catch((error) => {
       // come back to handle errors better

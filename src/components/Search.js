@@ -14,16 +14,20 @@ class SearchBar extends React.Component {
     this.state = {
       searchTerm: '',
       results: [],
+      notification: false,
+      notifications: '',
+      movieToAdd: ''
     };
   }
 // const SearchBar = ({ searchTerm, searchChangeCallback }) => {
 
 searchDatabase = (searchTerm) => {
-  axios.get(`https://api.themoviedb.org/3/search/movie?api_key=a4e96005d8a3d373dc3607963dc38e8f&query=${searchTerm}`)
+  this.resetNotification();
+  axios.get(`http://localhost:3000/movies?query=${searchTerm}`)
   .then((response) => {
     this.setState({
       searchTerm: searchTerm,
-      results: response.data.results,
+      results: response.data,
     });
     this.displayResults();
   })
@@ -33,6 +37,7 @@ searchDatabase = (searchTerm) => {
 }
 
 addMovie = (movie) => {
+  this.resetNotification();
   let params = {
     title: movie.title,
     overview: movie.overview,
@@ -43,14 +48,42 @@ addMovie = (movie) => {
 
   axios.post('http://localhost:3000/movies', params)
   .then((response) => {
-    // this.setState({
-    //   movies: response.data
-    // });
+    this.setState({
+      notification: true,
+      notifications: "success",
+      movieToAdd: movie.title,
+    })
     console.log(response.data)
   })
   .catch((error) => {
-    // come back to handle errors better
-    console.log(error.message)
+    console.log(error.message);
+    this.setState({
+      notification: true,
+      notifications: error.message,
+    })
+  });
+}
+
+displayNotification = () => {
+  if (this.state.notifications == "Request failed with status code 500") {
+  return (
+    <p className="notification error">This Movie is Already Added to the Rental Library</p>
+  )
+  } else if (this.state.notifications == "success") {
+    return (
+    <p className="notification success">{this.state.movieToAdd} Has Been Added to Rental Library</p>
+    )
+  } else {
+    return (
+      <p className="notification warning">{this.state.errors}</p>
+    )
+  }
+}
+
+resetNotification = () => {
+  this.setState({
+    notification: false,
+    notifications: [],
   });
 }
 
@@ -61,7 +94,7 @@ displayResults = () => {
             id={i}
             overview={movie.overview} 
             releaseDate={movie.release_date} 
-            image={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} 
+            image={movie.image_url} 
             externalId={movie.id}
             addMovieCallback={this.addMovie}/>
   });
@@ -69,9 +102,9 @@ displayResults = () => {
 }
 
 render () {
-console.log(this.state.moviesToAdd)
 return (
   <section>
+      {this.state.notification ? this.displayNotification(this.state.notifications) : ''}
       <div>
         <label className="search-bar--label" htmlFor="searchBar">Search Movie Database: </label>
       </div>
@@ -86,11 +119,6 @@ return (
     </section>
   )
 }
-};
-
-SearchBar.propTypes = {
-  // searchChangeCallback: PropTypes.func.isRequired,
-  // searchTerm: PropTypes.string.isRequired,
 };
 
 export default SearchBar;

@@ -4,14 +4,12 @@ import axios from 'axios';
 let date = new Date();
 date.setDate(new Date().getDate() + 7);
 
- // make rental conditionally render if it has at least one customer or one movie
-
 class Rental extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      rental: '',
+      rental: undefined,
       dueDate: date,
     };
   }
@@ -25,23 +23,46 @@ class Rental extends React.Component {
 
     axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, params)
     .then((response) => {
-      this.setState({rental: response.data})
+      this.setState({rental: response.data});
+      console.log(response.data);
+      this.clearRental();
+      this.props.clearSelection();
     })
     .catch((error) => {
       this.setState({ error: error.message });
     });
   }
 
-  render() {
+  clearRental = () => {
+    this.setState({
+      rental: '',
+    });
+  }
+
+  showRental = () => {
+    const showMovie = this.props.movie ? <p>{this.props.movie.title}</p> : "";
+    const showCustomer = this.props.customer ? <p>{this.props.customer.name}</p> : "";
+    const showRental = this.state.rental ? <p>{this.state.rental}</p> : "";
     return (
-    <div>
-      <section>
-        <p>{this.props.movie.title}</p>
-        <p>{this.props.customer.name}</p>
-        <p>{`${this.state.rental}`}</p>
+      <div>
+        <p>{showMovie}</p>
+        <p>{showCustomer}</p>
+        <p>{`${showRental}`}</p>
+        <p></p>
         <button onClick={() => {this.createRental(this.props.movie, this.props.customer, this.state.dueDate)}}>Checkout Rental</button>
-      </section>
-    </div>
+      </div>
+    )
+  }
+
+  render() {
+    const rentalContent = this.props.movie || this.props.customer ? <p>{ this.showRental() }</p> : "";
+    
+    return (
+      <div>
+        <section>
+          { rentalContent }
+        </section>
+      </div>
     )
   }
 }
