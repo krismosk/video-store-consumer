@@ -1,0 +1,41 @@
+.MovieCard {
+  display: flex;
+  border: solid 2px black;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.searchIcon {
+  width: 150px;
+  padding: 10px;
+}
+
+.searchMovieTitle {
+  text-align: left;
+}
+
+.searchDate {
+  text-align: left;
+
+}
+
+.searchOverview {
+  text-align: left;
+  font-style: italic;
+  font-size: .9em;
+  margin-right: 10px;
+
+}
+
+.button {
+  float: right;
+  width: 100px;
+  background: #0099FF;
+  border: 1px solid black;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: white;
+  border-radius: 10px;
+  margin: 10px;
+}
