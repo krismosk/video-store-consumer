@@ -18,7 +18,7 @@ const Customer = ({ id, name, address, city, state, postalCode, phone, findCusto
 }
 
 Customer.propTypes = {
-  findcustomer: PropTypes.func.isRequired,
+  findCustomer: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   address: PropTypes.string,

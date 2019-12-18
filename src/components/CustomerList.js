@@ -13,7 +13,7 @@ class CustomerList extends React.Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3000/customers')
+    axios.get('http://localhost:3003/customers')
       .then((response) => {
         this.setState({
           customers: response.data,
