@@ -1,17 +1,5 @@
 .rental-card {
- padding-left: 10%;
- padding-right: 10%;
-}
-
-.button {
-  float: right;
-  width: 100px;
-  background: #0099FF;
-  border: 1px solid black;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 1.1em;
-  color: white;
-  border-radius: 10px;
-  margin: 10px;
+ padding: 5%;
+ padding-left: 15%;
+ padding-right: 15%;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './RentalCard.css';
 
 const Customer = ({ id, name, address, city, state, postalCode, phone, findCustomer }) => {
   

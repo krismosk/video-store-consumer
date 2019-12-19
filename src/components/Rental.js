@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './RentalCard.css';
 
 let date = new Date();
-date = date.setDate(new Date().getDate() + 7);
+date.setDate(new Date().getDate() + 7);
 
 class Rental extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Rental extends React.Component {
     let params = {
       customer_id: customer.id,
       movie_id: movie.id,
-      due_date: dueDate.toISOString(),
+      due_date: date.toISOString(),
     }
 
     axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, params)
@@ -40,16 +41,18 @@ class Rental extends React.Component {
   }
 
   showRental = () => {
-    const showMovie = this.props.movie ? <p>{this.props.movie.title}</p> : "";
-    const showCustomer = this.props.customer ? <p>{this.props.customer.name}</p> : "";
+    const showMovie = this.props.movie ? <p>Title: {this.props.movie.title}</p> : "";
+    const showCustomer = this.props.customer ? <p>Customer: {this.props.customer.name}</p> : "";
     const showRental = this.state.rental ? <p>{this.state.rental}</p> : "";
     return (
-      <div>
-        <p>{showMovie}</p>
-        <p>{showCustomer}</p>
-        <p>{`${showRental}`}</p>
-        <p></p>
-        <button onClick={() => {this.createRental(this.props.movie, this.props.customer, this.state.dueDate)}}>Checkout Rental</button>
+      <div className="rental-card">
+        <div className="card card-body bg-light">
+          <p className="card-header">New Rental</p>
+          <span>{showMovie}</span>
+          <span>{showCustomer}</span>
+          <p>{`${showRental}`}</p>
+          <button className="btn btn-success" size="sm" onClick={() => {this.createRental(this.props.movie, this.props.customer, this.state.dueDate)}}>Checkout Rental</button>
+        </div>
       </div>
     )
   }
