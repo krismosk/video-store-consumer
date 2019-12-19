@@ -45,7 +45,7 @@ class RentalsList extends React.Component {
 
   makeOverdueList() {    
     if (this.state.overdueRentals === undefined ) {
-      return <p>NO OVERDUE RENTALS</p>;
+      return '';
     }
     else {
       const overdueList = this.state.overdueRentals.map((rental, i) => {

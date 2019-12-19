@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// npm install bootstrap
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './Search.css';
 import axios from 'axios';
