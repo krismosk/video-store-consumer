@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import './RentalCard.css';
 
 let date = new Date();
@@ -69,5 +70,11 @@ class Rental extends React.Component {
     )
   }
 }
+
+Rental.propTypes = {
+  movie: PropTypes.string.isRequired,
+  customer: PropTypes.string.isRequired,
+};
+
 
 export default Rental;
