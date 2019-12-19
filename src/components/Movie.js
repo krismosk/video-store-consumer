@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Movie.css';
 import PropTypes from 'prop-types';
 import './RentalCard.css';
 import './Movie.css';
@@ -12,8 +13,8 @@ const Movie = (props) => {
           <img className="movie-img" src={props.image} alt={`${props.title}`}/>
           <p>{props.title}</p>
           <p>{props.overview}</p>
-          <p>{props.releaseDate}</p>
-          <p>{props.inventory}</p>
+          <p>{props.dateFormatting(props.releaseDate)}</p>
+          <p>Inventory Available: {props.inventory}</p>
           <button 
             className="btn btn-primary" size="sm" 
             type='button'
@@ -22,7 +23,30 @@ const Movie = (props) => {
         </div>
       </div>
     </div>
-  );
+  )
+
+  // return(
+  //   <section className='MovieCard'>
+  //     <div>
+  //     <img src={props.image} className='searchIcon' alt={`${props.title}`}/>
+  //     </div>
+  //     <div>
+  //     <button 
+  //       type='button'
+  //       className='button'
+  //       onClick={() => {props.findMovie(props.id)}}
+  //     >
+  //     Select</button>
+  //     <h3 className='searchMovieTitle'> {props.title} </h3>
+  //     <p className='searchDate'> {props.dateFormatting(props.releaseDate)} </p>
+  //     <p className='searchOverview'> {props.overview} </p>
+  //     <p className='inventory'> Inventory Available: {props.inventory} </p>
+  //     </div>
+      
+
+      
+  //   </section>
+  // );
 };
 
 Movie.propTypes = {

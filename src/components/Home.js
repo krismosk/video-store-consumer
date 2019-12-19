@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, NavLink, HashRouter} from "react-router-dom";
+import { Route, NavLink, BrowserRouter as Router} from "react-router-dom";
 import Search from "./Search";
 import Rental from "./Rental";
 import RentalsList from "./RentalsList";
@@ -39,7 +39,7 @@ class Home extends React.Component {
 
   render () {
     return (
-      <HashRouter>
+      <Router>
         <div className="App">
             <h1>Ada Movie Store</h1>
             <section><Rental movie={this.state.selectedMovie} customer={this.state.selectedCustomer} clearSelection={this.clearSelection}/></section>
@@ -56,7 +56,7 @@ class Home extends React.Component {
               <Route path="/rentals" component={RentalsList}/>
             </div>
           </div>
-      </HashRouter>
+      </Router>
     )
   }
 }

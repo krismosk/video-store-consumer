@@ -13,7 +13,7 @@ class RentalLibrary extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3000/movies')
+    axios.get('https://video-store-backend.herokuapp.com/movies')
     .then((response) => {
       this.setState({
         movies: response.data
@@ -23,6 +23,15 @@ class RentalLibrary extends Component {
       // come back to handle errors better
       console.log(error.message)
     });
+  }
+
+  formatDate = (date) => {
+    const monthNames = [ "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December" ];
+  
+    let newDate = new Date(date);
+    let formattedDate = monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear();
+    return formattedDate;
   }
 
   findMovie = (movieId) => {
@@ -44,6 +53,7 @@ class RentalLibrary extends Component {
         inventory={1}
         externalId={movie.external_id}
         findMovie={this.findMovie}
+        dateFormatting={this.formatDate}
       />
     });
     
