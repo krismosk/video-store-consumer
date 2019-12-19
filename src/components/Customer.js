@@ -5,15 +5,14 @@ import './RentalCard.css';
 const Customer = ({ id, name, address, city, state, postalCode, phone, findCustomer }) => {
   
   return (
-  <div>
-    <section>
-      <p>{ id }</p>
-      <p>{ name }</p>
-      <p>{ address }</p>
-      <p>{ city }</p>
-      <p>{ state }</p>
-    </section>
-    <button onClick={() => {findCustomer(id)}} type="button">Select</button>
+  <div className="card-deck rental-card">
+    <div className="card bg-light">
+      <div className="card-body">
+        <p>{ name }</p>
+        <p>{ address }, { city }, { state }</p>
+        <button className="btn btn-primary" size="sm"  onClick={() => {findCustomer(id)}} type="button">Select</button>
+      </div>
+    </div>
   </div>
   )
 }
