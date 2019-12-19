@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 let date = new Date();
-date.setDate(new Date().getDate() + 7);
+date = date.setDate(new Date().getDate() + 7);
 
 class Rental extends React.Component {
   constructor(props) {
