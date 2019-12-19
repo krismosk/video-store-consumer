@@ -1,8 +1,6 @@
-.RentalCard {
-  display: flex;
-  border: solid 2px black;
-  margin: 5px;
-  border-radius: 10px;
+.rental-card {
+ padding-left: 10%;
+ padding-right: 10%;
 }
 
 .button {
