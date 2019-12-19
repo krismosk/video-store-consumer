@@ -10,7 +10,7 @@ const Customer = ({ id, name, address, city, state, postalCode, phone, findCusto
       <div className="card-body">
         <p>{ name }</p>
         <p>{ address }, { city }, { state }</p>
-        <button className="btn btn-primary" size="sm"  onClick={() => {findCustomer(id)}} type="button">Select</button>
+        <button className="btn btn-primary" size="sm" onClick={() => {findCustomer(id)}} type="button">Select</button>
       </div>
     </div>
   </div>
