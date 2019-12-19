@@ -21,7 +21,7 @@ class Rental extends React.Component {
       due_date: dueDate.toISOString(),
     }
 
-    axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, params)
+    axios.post(`https://video-store-backend.herokuapp.com/rentals/${movie.title}/check-out`, params)
     .then((response) => {
       this.setState({rental: response.data});
       console.log(response.data);

@@ -23,7 +23,7 @@ class SearchBar extends React.Component {
 
 searchDatabase = (searchTerm) => {
   this.resetNotification();
-  axios.get(`http://localhost:3000/movies?query=${searchTerm}`)
+  axios.get(`https://video-store-backend.herokuapp.com/movies?query=${searchTerm}`)
   .then((response) => {
     this.setState({
       searchTerm: searchTerm,
@@ -46,7 +46,7 @@ addMovie = (movie) => {
     external_id: movie.externalId
   }
 
-  axios.post('http://localhost:3000/movies', params)
+  axios.post('https://video-store-backend.herokuapp.com/movies', params)
   .then((response) => {
     this.setState({
       notification: true,

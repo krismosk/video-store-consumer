@@ -2,11 +2,13 @@
   "name": "video-store-consumer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://krismosk.github.io/video-store-consumer",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "axios": "^0.19.0",
     "bootstrap": "^4.4.1",
+    "gh-pages": "^2.1.1",
     "react": "^16.8.6",
     "react-datetime": "^2.16.3",
     "react-dom": "^16.8.6",
@@ -17,6 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "browserslist": {

@@ -13,7 +13,7 @@ class CustomerList extends React.Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3000/customers')
+    axios.get('https://video-store-backend.herokuapp.com/customers')
       .then((response) => {
         this.setState({
           customers: response.data,

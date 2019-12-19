@@ -13,7 +13,7 @@ class RentalLibrary extends Component {
   }
 
   componentDidMount () {
-    axios.get('http://localhost:3000/movies')
+    axios.get('https://video-store-backend.herokuapp.com/movies')
     .then((response) => {
       this.setState({
         movies: response.data
