@@ -44,16 +44,16 @@ class Home extends React.Component {
             <h1>Ada Movie Store</h1>
             <section><Rental movie={this.state.selectedMovie} customer={this.state.selectedCustomer} clearSelection={this.clearSelection}/></section>
             <ul className="header">
-              <li><NavLink to="/search">Search</NavLink></li>
-              <li><NavLink to="/movies">Movies</NavLink></li>
-              <li><NavLink to="/customers">Customers</NavLink></li>
-              <li><NavLink to="/rentals">Rentals</NavLink></li>
+              <li><NavLink to="/video-store-consumer/search">Search</NavLink></li>
+              <li><NavLink to="/video-store-consumer/movies">Movies</NavLink></li>
+              <li><NavLink to="/video-store-consumer/customers">Customers</NavLink></li>
+              <li><NavLink to="/video-store-consumer/rentals">Rentals</NavLink></li>
             </ul>
             <div className="content">
-              <Route path="/search" component={Search}/>
-              <Route path="/movies" render={() => <RentalLibrary selectMovie={this.selectMovie}/>}/>
-              <Route path="/customers" render={() => <CustomerList selectCustomer={this.selectCustomer} />}/>
-              <Route path="/rentals" component={RentalsList}/>
+              <Route path="/video-store-consumer/search" component={Search}/>
+              <Route path="/video-store-consumer/movies" render={() => <RentalLibrary selectMovie={this.selectMovie}/>}/>
+              <Route path="/video-store-consumer/customers" render={() => <CustomerList selectCustomer={this.selectCustomer} />}/>
+              <Route path="/video-store-consumer/rentals" component={RentalsList}/>
             </div>
           </div>
       </Router>
