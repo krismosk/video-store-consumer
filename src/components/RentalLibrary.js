@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import Movie from './Movie';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-
+import LibrarySearch from './LibrarySearch';
 class RentalLibrary extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       movies: [],
+      searchTerm: '',
     };
   }
 
@@ -41,6 +42,21 @@ class RentalLibrary extends Component {
     this.props.selectMovie(selectedMovie);
   }
 
+  filteredList = (searchValue) => {
+
+      const newMovies = this.state.movies.filter((movie) => {
+        const text = (`${ movie.title } ${ movie.releaseDate }`).toUpperCase();
+        return text.includes(searchValue.toUpperCase());
+      });
+  }
+
+  filterLibrary = (search) => {
+    this.setState({
+      searchTerm: search,
+      movies: this.filteredList(search),
+    });
+  }
+
   makeMovieList() {
     const movieList = this.state.movies.map((movie, i) => {
       return <Movie
@@ -63,6 +79,7 @@ class RentalLibrary extends Component {
   render() {
     return (
       <div>
+         <LibrarySearch searchCallback={this.filterLibrary} />
         { this.makeMovieList() }
       </div>
     )
